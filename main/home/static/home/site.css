@@ -1,0 +1,39 @@
+.body-style {
+    background-color: DarkSlateGrey;
+    color: WhiteSmoke;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+a:link {
+    color: WhiteSmoke;
+}
+
+a:visited {
+    color: WhiteSmoke;
+}
+
+a:hover {
+   color: Bisque;
+}
+
+input[name=engineer_id] {
+    width: 50%;
+}
+
+input[name=engineer_name] {
+    width: 50%;
+}
+
+input[name=project_id] {
+    width: 50%;
+}
+
+input[name=project_name] {
+    width: 50%;
+}
+
+input[name=software] {
+    width: 50%;
+}

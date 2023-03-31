@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>View Project Assignments</title>
+        {% load static %}
+        <!-- Loads custom template tags from assignment_read application -->
+        {% load assignment_read_tags %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">View All Assignments of Engineers to Projects<p>
+        <br>
+        <br>
+        <!-- Following section only runs if there are records in project_engineer_lookup table -->
+        {% if assignments %}
+            <table style="text-align:left;">
+                <thead>
+                <tr>
+                    <th>Engineer ID&emsp;</th>
+                    <th>Engineer Name&emsp;</th>
+                    <th>Project ID&emsp;</th>
+                    <th>Project Name</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Iterates through every Assignment / project_engineer_lookup in database -->
+                {% for assignment in assignments %}
+                    <tr>
+                        <td>{{ assignment.engineer_id_id }}</td>
+                        <!-- Calls the get_engineer_name method from templatetags directory of assignment_read
+                             to retrieve engineer_name -->
+                        <td>{% get_engineer_name assignment.engineer_id_id %}</td>
+                        <td>{{ assignment.project_id_id }}</td>
+                        <!-- Calls the get_project_name method from templatetags directory of assignment_read
+                             to retrieve project_name -->
+                        <td>{% get_project_name assignment.project_id_id %}</td>
+                        <td><a href="{% url 'assignment_update' assignment.lookup_id %}">Edit</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Project Assignments in database</p>
+        {% endif %}
+        <br>
+        <br>
+        <a href="{% url 'home' %}">Go back to Home Page</a>
+    </body>
+</html>

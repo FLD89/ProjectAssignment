@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Assign Engineer to Project</title>
+        {% load static %}
+        <!-- loads custom template tags from project_read application -->
+        {% load project_read_tags %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">Assign a Software Engineer to {{ project.project_name }}</p>
+        <br>
+        The associated software for this project is: {{ project.software }}
+        <br>
+        <br>
+        Please input an Engineer ID from the following list of Software Engineers not assigned to this project already
+        with training in {{ project.software }}:
+        <br>
+        <!-- Calls the get_available_engineers method from templatetags directory of project_read
+             to display engineers that meet the requirements to be assigned -->
+        {% get_available_engineers project.project_id %}
+        <form method="POST">
+            <!-- Django automatically renders forms.py from assignment_create -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Assign</button>
+        </form>
+        <br>
+        <a href="{% url 'home' %}">Go Back to Home Page</a>
+    </body>
+</html>

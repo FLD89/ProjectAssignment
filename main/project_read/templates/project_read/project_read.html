@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>View Projects</title>
+        {% load static %}
+        <!-- Loads custom template tags from project_read application -->
+        {% load project_read_tags %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">View All Projects</p>
+        <br>
+        <br>
+        <!-- Following section only runs if there are records in Project table -->
+        {% if projects %}
+            <table style="text-align:left;">
+                <thead>
+                <tr>
+                    <th>Project ID&emsp;</th>
+                    <th>Project Name</th>
+                    <th>&emsp;Software</th>
+                    <th></th>
+                    <th>Assigned Engineers</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Iterates through every Project in database -->
+                {% for project in projects %}
+                    <tr>
+                        <td>{{ project.project_id }}</td>
+                        <td>{{ project.project_name }}</td>
+                        <td>&emsp;{{ project.software }}</td>
+                        <td>&emsp;<a href="{% url 'project_update' project.project_id %}">Edit</a>&emsp;</td>
+                        <!-- Following section only runs if there are project_engineer_lookups / Assignments for that Project -->
+                        {% if lookups %}
+                            <!-- Calls the get_assigned_engineers method from templatetags directory of project_read
+                                 to retrieve all Engineers already assigned to each Project -->
+                            <td>{% get_assigned_engineers project.project_id %}</td>
+                        {% else %}
+                            <td>None<td>
+                        {% endif %}
+                        <td><a href="{% url 'assignment_create' project.project_id %}">Assign Engineer</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Projects in database</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'project_create' %}">Create a new Project</a>
+        <br>
+        <a href="{% url 'assignment_read' %}">Update a Project Assignment</a>
+        <br>
+        <a href="{% url 'home' %}">Go back to Home Page</a>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>View Engineers</title>
+        {% load static %}
+        <!-- Loads custom template tags from engineer_read application -->
+        {% load engineer_read_tags %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">View All Engineers</p>
+        <br>
+        <br>
+        <!-- Following section only runs if there are records in software_engineer table -->
+        {% if engineers %}
+            <table style="text-align:left;">
+                <thead>
+                <tr>
+                    <th>Engineer ID&emsp;</th>
+                    <th>Engineer Name&emsp;</th>
+                    <th></th>
+                    <th>&emsp;Software Training</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Iterates through every software_engineer in database -->
+                {% for engineer in engineers %}
+                    <tr>
+                        <td>{{ engineer.engineer_id }}</td>
+                        <td>{{ engineer.engineer_name }}</td>
+                        <td><a href="{% url 'engineer_update' engineer.engineer_id %}">Edit Name</a></td>
+                        <!-- Only if software_training entry for that software_engineer in database -->
+                        {% if trainings %}
+                        <!-- Calls the get_training_record method from templatetags directory of engineer_read
+                             to retrieve string listing all software_training -->
+                            <td>&emsp;{% get_training_record engineer.engineer_id %}</td>
+                        {% else %}
+                            <td>&emsp;No Software Training<td>
+                        {% endif %}
+                        <td>&emsp;<a href="{% url 'training_create' engineer.engineer_id %}">Add Training</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Software Engineers in database</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'engineer_create' %}">Create a new Software Engineer</a>
+        <br>
+        <a href="{% url 'training_read' %}">Edit Software Training</a>
+        <br>
+        <a href="{% url 'home' %}">Go back to Home Page</a>
+    </body>
+</html>

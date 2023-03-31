@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>View Training</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">View All Training</p>
+        <br>
+        <br>
+        <!-- Following section only runs if there are records in software_training table -->
+        {% if trainings %}
+            <table style="text-align:left;">
+                <thead>
+                <tr>
+                    <th>Engineer Name&emsp;</th>
+                    <th>Software</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Iterates through every software_training in database -->
+                {% for training in trainings %}
+                    <tr>
+                        <td>{{ training.engineer_id }}</td>
+                        <td>{{ training.software }}</td>
+                        <td>&emsp;<a href="{% url 'training_update' training.training_id %}">Edit</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Software Training in database</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'home' %}">Go back to Home Page</a>
+    </body>
+</html>

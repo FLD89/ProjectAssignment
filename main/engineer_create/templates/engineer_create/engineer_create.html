@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Create Engineer</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}" />
+    </head>
+    <body class="body-style">
+        <p style="font-size:24px;">Create a new Software Engineer</p>
+        <br>
+        <br>
+        <form method="POST">
+            <!-- Django automatically renders forms.py from assignment_create -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+        <br>
+        <a href="{% url 'home' %}">Go Back to Home Page</a>
+    </body>
+</html>

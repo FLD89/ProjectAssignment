@@ -1,0 +1,37 @@
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('A123','Al Capone');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('B234','Bob Marley');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('C345','Charlie Chaplin');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('D456','Doris Day');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('E567','Elmer Elephant');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('F678','Frida Kahlo');
+INSERT INTO home_softwareengineer (engineer_id,engineer_name) VALUES ('G789','George Best');
+
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('A123','Python');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('A123','Flask');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('B234','Python');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('B234','Django');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('C345','Python');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('C345','Django');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('D456','JavaScript');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('E567','JavaScript');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('E567','React');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('F678','JavaScript');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('F678','ExpressJS');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','Python');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','Flask');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','Django');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','JavaScript');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','React');
+INSERT INTO home_softwaretraining (engineer_id_id,software) VALUES ('G789','ExpressJS');
+
+Insert INTO home_project (software,project_name) VALUES ('Python','Project Alpha Python functionality');
+Insert INTO home_project (software,project_name) VALUES ('Django','Project Alpha Django framework');
+Insert INTO home_project (software,project_name) VALUES ('Python','Project Beta Bug fix 3');
+Insert INTO home_project (software,project_name) VALUES ('JavaScript','Project Charlie JavaScript enhancement');
+Insert INTO home_project (software,project_name) VALUES ('ExpressJS','Project Charlie ExpressJS fix');
+Insert INTO home_project (software,project_name) VALUES ('React','Project Delta React framework');
+
+Insert INTO home_projectengineerlookup (project_id_id,engineer_id_id) VALUES ('1','A123');
+Insert INTO home_projectengineerlookup (project_id_id,engineer_id_id) VALUES ('2','B234');
+Insert INTO home_projectengineerlookup (project_id_id,engineer_id_id) VALUES ('4','D456');
+Insert INTO home_projectengineerlookup (project_id_id,engineer_id_id) VALUES ('5','F678');
